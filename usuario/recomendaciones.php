@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'check.php';
 ?>
 
 <!doctype html>
@@ -35,19 +36,6 @@ session_start();
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 	<body>
-	
-			
-    <?php
-		
-        include '../conn.php';	
-        $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-        
-        
-        ?>
-
 
 		<!-- Optional JavaScript -->
 	
@@ -60,7 +48,7 @@ session_start();
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a  class="simple-text">
-				<?php echo $row['Name']; ?>
+				<?php echo $_SESSION['usuario']; ?>
                 </a>
             </div>
 

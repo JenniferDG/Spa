@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'check.php';	
 ?>
 
 <!doctype html>
@@ -35,37 +36,7 @@ session_start();
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 	<body>
-	
-		
-			<?php
-		
-			include '../conn.php';	
-			
-		
-			$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-		
-			if (!$conn) {
-				die("Conexion fallida " . mysqli_connect_error());
-			}
-			
-		
-			$email = $_POST['email']; 
-			$password = $_POST['password'];
-			
-		
-			$result = mysqli_query($conn, "SELECT Email, Password, Name FROM users WHERE Email = '$email'");
-			
-		
-			$row = mysqli_fetch_assoc($result);
-			
-			
-			$hash = $row['Password'];
-			
-			?>
-
-
-		<!-- Optional JavaScript -->
+	<!-- Optional JavaScript -->
 	
 	<div class="wrapper">
     <div class="sidebar" data-color="azure" data-image="assets/img/1.png">
@@ -76,7 +47,8 @@ session_start();
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a  class="simple-text">
-				<?php echo $row['Name']; ?>
+                
+                <?php echo $_SESSION['usuario']; ?>
                 </a>
             </div>
 

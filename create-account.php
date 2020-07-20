@@ -17,7 +17,7 @@
 	$count = mysqli_num_rows($result);
 
 	if ($count == 1) {
-		header('Location: index.html');	
+		header('Location: index.php');	
 	} else {	
 	
 
@@ -25,16 +25,20 @@
 	$email = $_POST['email'];
 	$pass = $_POST['password'];
 	
+	
+
+
 	$passHash = password_hash($pass, PASSWORD_DEFAULT);
 	
 	
 	$query = "INSERT INTO users (Name, Email, Password) VALUES ('$name', '$email', '$passHash')";
 
 	if (mysqli_query($conn, $query)) {
-		header('Location: login.html');	
+		header('Location: login.php');	
 		} else {
 			echo "Error: " . $query . "<br>" . mysqli_error($conn);
 		}	
-	}	
+	}
+
 	mysqli_close($conn);
 	?>
